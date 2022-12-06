@@ -31,8 +31,8 @@ function generateStoryMarkup(story, deleteBtn = false) {
 
   return $(`
       <li id="${story.storyId}">
-        <span>${deleteBtn ? makeDeleteBtn() : ""}</span>
-        <span>${star ? makeStar(story, currentUser) : ""}</span>
+        ${deleteBtn ? makeDeleteBtn() : ""}
+        ${makeStar(story, currentUser)}
         <a href="${story.url}" target="a_blank" class="story-link">
           ${story.title}
         </a>
@@ -79,18 +79,19 @@ function putFavesOnPage(){
 function makeDeleteBtn(){
   return `
     <span class="trash">
-    <i class="fa-solid fa-trash-xmark"></i>
+    <i class="fas fa-trash"></i>
     </span>
-  `
+  `;
 }
 
 function makeStar(story, user){
 let isFave = user.isFave(story);
-let star = isFave ? "solid" : "regular";
+console.log(isFave);
+let star = isFave ? "s" : "r";
 
 return `
   <span class="star">
-   <i class="fa-${star} fa-star></i> 
+   <i class="fa${star} fa-star"></i> 
   </span>`;
 }
 
@@ -153,16 +154,16 @@ function putOwnStoriesOnPage(){
 async function makeFaves(e){
   let $target = $(e.target);
   let targetId = $target.closest("li").attr("id");
-  let story = storyList.stories.find(s => s.targetId === targetId);
+  let story = storyList.stories.find((s) => s.storyId === targetId);
 
-  if($target.hasClass("fa-solid")){
+  if($target.hasClass("fas")){
     await currentUser.removeFave(story);
-    $target.closest("i").toggleClass("fa-solid fa-regular");
+    $target.closest("i").toggleClass("far fa-star");
   }
   else{
     await currentUser.addFave(story);
-    $target.closest("i").toggleClass("fa-solid fa-regular");
+    $target.closest("i").toggleClass("fas fa-star");
   }
 }
 
-$storiesLists.on("click", ".fa-star", makeFaves);
+$allStoriesList.on("click", ".star", makeFaves);

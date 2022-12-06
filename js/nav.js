@@ -46,6 +46,7 @@ $navSubmitStory.on("click", navSubmitStoryClick);
 
 
 function navMyStories(e){
+  $allStoriesList.empty();
   hidePageComponents();
   putOwnStoriesOnPage();
   $ownStories.show();
@@ -54,6 +55,7 @@ function navMyStories(e){
 $body.on("click", "#nav-my-stories", navMyStories);
 
 function navFavesClick(e){
+$allStoriesList.empty();
 hidePageComponents();
 putFavesOnPage();
 }

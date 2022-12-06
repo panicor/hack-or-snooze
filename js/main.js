@@ -7,9 +7,9 @@ const $body = $("body");
 const $storiesLoadingMsg = $("#stories-loading-msg");
 const $allStoriesList = $("#all-stories-list");
 const $faveStories = $("#fave-stories");
-const $ownStories = $("#my-stories")
+const $ownStories = $("#my-stories");
 
-const $storiesLists = $("stories-list")
+const $storiesLists = $("#stories-list");
 
 
 const $loginForm = $("#login-form");
@@ -25,6 +25,7 @@ const $navSubmitStory = $("#nav-story-submit");
 
 const $profile = $("#profile");
 
+const $star = $(".star");
 
 /** To make it easier for individual components to show just themselves, this
  * is a useful function that hides pretty much everything on the page. After

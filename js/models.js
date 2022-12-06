@@ -231,7 +231,7 @@ class User {
     await axios({
       url: `${BASE_URL}/users/${this.username}/favorites/${story.storyId}`,
       method: method,
-      token: { token }
+      data: { token },
     })
     }
 
